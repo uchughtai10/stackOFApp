@@ -1,0 +1,63 @@
+<div class="row">
+<nav class="navbar navbar-expand-lg navbar-light bg-white" style=" width:800px;height: 50px; margin-top: 25px; border-bottom-width: 1px; border-bottom-style: solid; border-width: 0.5px; border-bottom-color: grey">
+  <h5>Top Questions</h5>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="margin-left: 250px">interesting</a>
+      </li>
+      <li class="nav-item active" >
+        <a class="nav-link" href="#" style="margin-left: 8px"><span style="background-color: yellow">352</span> featured</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="margin-left: 8px">hot</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="margin-left: 8px">week</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#" style="margin-left: 8px">month</a>
+      </li>
+     </ul>
+</nav>
+<button class="btn btn-default" style="background-color: blue; color: white; margin-left: 185px;margin-top: 30px; height: 37px">Ask Question
+</button>
+<%= render 'layouts/question' %>
+</div>
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>View count</th>
+      <th>Vote count</th>
+      <th>Ans count</th>
+      <th>Slug</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.title %></td>
+        <td><%= question.body %></td>
+        <td><%= question.view_count %></td>
+        <td><%= question.vote_count %></td>
+        <td><%= question.ans_count %></td>
+        <td><%= question.slug %></td>
+        <td><%= link_to 'Show', question %></td>
+        <td><%= link_to 'Edit', edit_question_path(question) %></td>
+        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>
